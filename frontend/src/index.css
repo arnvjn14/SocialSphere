@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,500;1,700&display=swap");
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+}
+
+/* .section-login {
+  background-color: rgba(46, 59, 131, 1);
+} */
