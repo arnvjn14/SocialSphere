@@ -47,6 +47,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
 // DiskStorage. The disk storage engine gives you full control on storing files to disk. There are two options available, destination and filename . They are both functions that determine where the file should be stored.
 const upload = multer({ storage });
 

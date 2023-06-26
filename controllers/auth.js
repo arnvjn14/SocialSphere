@@ -32,6 +32,8 @@ export const register = async (req, res) => {
       impressions: Math.floor(Math.random() * 10000),
     });
 
+    console.log(req.file);
+
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {

@@ -65,6 +65,8 @@ const Form = () => {
     }
     formData.append("picturePath", values.picture.name);
 
+    console.log(values.picture.name);
+
     const savedUserResponse = await fetch(
       "http://localhost:3001/auth/register",
       {
@@ -97,6 +99,8 @@ const Form = () => {
         })
       );
       navigate("/home");
+    } else {
+      navigate("/login");
     }
   };
 

@@ -11,6 +11,7 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
+import PostComment from "./CommentWidget";
 
 const PostWidget = ({
   postId,
@@ -29,6 +30,7 @@ const PostWidget = ({
   const loggedInUserId = useSelector((state) => state.user._id);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
+  const loggedInUser = useSelector((state) => state.user);
 
   const { palette } = useTheme();
   const main = palette.neutral.main;
@@ -103,6 +105,9 @@ const PostWidget = ({
             </Box>
           ))}
           <Divider />
+          <Box>
+            <PostComment picturePath={loggedInUser.picturePath} />
+          </Box>
         </Box>
       )}
     </WidgetWrapper>

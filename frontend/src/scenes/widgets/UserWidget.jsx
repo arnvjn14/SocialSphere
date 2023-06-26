@@ -4,8 +4,16 @@ import {
   LocationOnOutlined,
   WorkOutlineOutlined,
 } from "@mui/icons-material";
+import AppShortcutIcon from "@mui/icons-material/AppShortcut";
 // import IconButton from "@mui/material";
-import { Box, Typography, Divider, useTheme, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Divider,
+  useTheme,
+  IconButton,
+  Link,
+} from "@mui/material";
 import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
@@ -129,31 +137,36 @@ const UserWidget = ({ userId, picturePath }) => {
           Social Profiles
         </Typography>
 
-        <FlexBetween gap="10rem" mb="0.5rem">
-          <FlexBetween gap="1rem">
-            <img src="../assets/twitter.png" alt="twitter" />
-            <Box>
-              <Typography color={main} fontWeight="500">
-                Twitter
-              </Typography>
-              <Typography color={medium}>Social Network</Typography>
-            </Box>
-          </FlexBetween>
-          <EditOutlined sx={{ color: main }} />
-        </FlexBetween>
+        <Link href="https://twitter.com/home" underline="hover">
+          <FlexBetween gap="10rem" mb="0.5rem">
+            <FlexBetween gap="1rem">
+              <img src="../assets/twitter.png" alt="twitter" />
+              <Box>
+                <Typography color={main} fontWeight="500">
+                  Twitter
+                </Typography>
+                <Typography color={medium}>Social Network</Typography>
+              </Box>
+            </FlexBetween>
 
-        <FlexBetween gap="1rem">
-          <FlexBetween gap="1rem">
-            <img src="../assets/linkedin.png" alt="linkedin" />
-            <Box>
-              <Typography color={main} fontWeight="500">
-                Linkedin
-              </Typography>
-              <Typography color={medium}>Network Platform</Typography>
-            </Box>
+            <AppShortcutIcon sx={{ color: main }} />
           </FlexBetween>
-          <EditOutlined sx={{ color: main }} />
-        </FlexBetween>
+        </Link>
+
+        <Link href="https://www.linkedin.com/" underline="hover">
+          <FlexBetween gap="1rem">
+            <FlexBetween gap="1rem">
+              <img src="../assets/linkedin.png" alt="linkedin" />
+              <Box>
+                <Typography color={main} fontWeight="500">
+                  Linkedin
+                </Typography>
+                <Typography color={medium}>Network Platform</Typography>
+              </Box>
+            </FlexBetween>
+            <AppShortcutIcon sx={{ color: main }} />
+          </FlexBetween>
+        </Link>
       </Box>
     </WidgetWrapper>
   );
