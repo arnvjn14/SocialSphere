@@ -22,10 +22,16 @@ import UserImage from "components/UserImage";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPosts } from "state";
+import { setPost } from "state";
 import { useNavigate } from "react-router-dom";
 
-const PostComment = ({ postId, userId, picturePath }) => {
+const PostComment = ({
+  postId,
+  picturePath,
+  comment,
+  setComment,
+  handleComment,
+}) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
@@ -35,15 +41,11 @@ const PostComment = ({ postId, userId, picturePath }) => {
   const medium = palette.neutral.medium;
   const navigate = useNavigate();
 
-  const [comment, setComment] = useState("");
-
-  const handleComment = async () => {};
-
   return (
     <WidgetWrapper>
       <FlexBetween gap="1.5rem">
         <Box
-          onClick={() => navigate(`/profile/${userId}`)}
+          onClick={() => navigate(`/profile/${_id}`)}
           sx={{
             "&:hover": {
               cursor: "pointer",

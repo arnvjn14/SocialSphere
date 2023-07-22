@@ -15,6 +15,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "theme";
+import AiImageComponent from "scenes/Ai-image";
 // ye sab pata lagao
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
             <Route
               path="/profile/:userId"
               element={isAuth ? <ProfilePage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/create-ai-post"
+              element={isAuth ? <AiImageComponent /> : <Navigate to="/" />}
             />
           </Routes>
         </ThemeProvider>

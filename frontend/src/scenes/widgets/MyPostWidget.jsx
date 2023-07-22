@@ -147,7 +147,7 @@ const MyPostWidget = ({ userId, picturePath }) => {
           </Typography>
         </FlexBetween>
 
-        {isNonMobileScreens ? (
+        {/* {isNonMobileScreens ? (
           <>
             <FlexBetween gap="0.25rem">
               <GifBoxOutlined sx={{ color: mediumMain }} />
@@ -164,11 +164,11 @@ const MyPostWidget = ({ userId, picturePath }) => {
               <Typography color={mediumMain}>Audio</Typography>
             </FlexBetween>
           </>
-        ) : (
-          <FlexBetween gap="0.25rem">
-            <MoreHorizOutlined sx={{ color: mediumMain }} />
-          </FlexBetween>
-        )}
+        ) : ( */}
+        <FlexBetween gap="0.25rem">
+          <MoreHorizOutlined sx={{ color: mediumMain }} />
+        </FlexBetween>
+        {/* )} */}
 
         <Button
           disabled={!post && !image}

@@ -18,10 +18,10 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log("SERVER PORT: ---"));
-    // User.insertMany(users);
-    // Post.insertMany(posts);
-    console.log(users);
-    console.log(posts);
+    User.insertMany(users);
+    Post.insertMany(posts);
+    // console.log(users);
+    // console.log(posts);
     // ADD DATA ONLY ONE TIME
   })
   .catch((err) => console.log(`ERRORhii ${err}`));

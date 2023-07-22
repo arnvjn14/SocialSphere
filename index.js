@@ -83,8 +83,8 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database connected");
 
-  console.log(users);
-  console.log(posts);
+  // console.log(users);
+  // console.log(posts);
 
   // ADD DATA ONLY ONE TIME
   // User.insertMany(users);
@@ -99,6 +99,7 @@ import { register } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import apiRoutes from "./routes/apiRoutes.js";
 import { verifyToken } from "./middleware/auth.js";
 import { createPost } from "./controllers/posts.js";
 
@@ -110,3 +111,4 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+app.use("/api/v1/api", apiRoutes);

@@ -36,6 +36,23 @@ const PostWidget = ({
   const main = palette.neutral.main;
   const primary = palette.primary.main;
 
+  const [comment, setComment] = useState("");
+
+  const handleComment = async () => {
+    const response = await fetch(`http://localhost:3001/posts/updatecomment`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ postId: postId, comment: comment }),
+    });
+    const updatedPost = await response.json();
+    // console.log(updatedPost);
+    dispatch(setPost({ post: updatedPost }));
+    setComment("");
+  };
+
   const patchLike = async () => {
     const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
       method: "PATCH",
@@ -106,7 +123,13 @@ const PostWidget = ({
           ))}
           <Divider />
           <Box>
-            <PostComment picturePath={loggedInUser.picturePath} />
+            <PostComment
+              picturePath={loggedInUser.picturePath}
+              postId={postId}
+              handleComment={handleComment}
+              comment={comment}
+              setComment={setComment}
+            />
           </Box>
         </Box>
       )}
