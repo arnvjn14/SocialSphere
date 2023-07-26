@@ -15,9 +15,13 @@ const AiImageWidget = () => {
       onClick={() => {
         navigate("/create-ai-post");
       }}
-      m="2rem 0"
+      sx={{
+        "&:hover": {
+          cursor: "pointer",
+        },
+      }}
     >
-      <FlexBetween>
+      {/* <FlexBetween>
         <Typography
           sx={{
             "&:hover": {
@@ -28,7 +32,24 @@ const AiImageWidget = () => {
           Hello
         </Typography>
         <div className="text-3xl font-bold bg-yellow-500">helo</div>
+      </FlexBetween> */}
+      <FlexBetween>
+        <Typography color={dark} variant="h5" fontWeight="500">
+          Generate AI images
+        </Typography>
       </FlexBetween>
+      <img
+        width="100%"
+        height="auto"
+        alt="ai-image"
+        src="http://localhost:3001/assets/ai-image.jpg"
+        style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
+      />
+      <Typography color={medium} m="1rem 0">
+        Unleash your imagination with mesmerizing AI-generated images that
+        redefine artistic boundaries. Witness a fusion of technology and
+        creativity in every pixel.
+      </Typography>
     </WidgetWrapper>
   );
 };

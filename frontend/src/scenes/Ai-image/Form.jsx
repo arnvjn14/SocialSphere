@@ -9,17 +9,21 @@ import { getRandomPrompt } from "utils";
 import FormField from "./FormField";
 import Loader from "components/Loader";
 import { useSelector } from "react-redux";
+import { setPosts } from "state";
 
 const Form = () => {
   const token = useSelector((state) => state.token);
+  const userId = useSelector((state) => state.user._id);
   const navigate = useNavigate();
   const [form, setform] = useState({
     name: "",
     prompt: "",
     photo: "",
+    userId: userId,
   });
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,16 +32,27 @@ const Form = () => {
       setLoading(true);
 
       try {
-        const response = await fetch("http://localhost:3001/api/v1/post", {
+        // const response = await fetch("http://localhost:3001/api/v1/post", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        //   body: JSON.stringify(form),
+        // });
+
+        // await response.json();
+        // navigate("/");
+        const response = await fetch(`http://localhost:3001/posts/Ai-post`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(form),
         });
-
-        await response.json();
-        navigate("/");
+        const posts = await response.json();
+        dispatch(setPosts({ posts }));
+        navigate("/home");
       } catch (error) {
         alert(error);
       } finally {
@@ -108,7 +123,7 @@ const Form = () => {
           community
         </p>
       </div>
-      <form className="mt-11 max-w-3xl" onSubmit={() => {}}>
+      <form className="mt-11 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField
             labelName="Your Name"

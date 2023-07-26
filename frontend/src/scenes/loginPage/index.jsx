@@ -19,7 +19,7 @@ const LoginPage = () => {
         textAlign="center"
       >
         <Typography fontWeight="bold" fontSize="32px" color="primary">
-          Website
+          SocialSphere
         </Typography>
       </Box>
       <Box
@@ -35,7 +35,7 @@ const LoginPage = () => {
           sx={{ mb: "1.5rem" }}
           textAlign="center"
         >
-          Welcome to Website, the Social Media Webiste
+          Welcome to SocialSphere, the Social Media Webiste !
         </Typography>
         <Form />
       </Box>
