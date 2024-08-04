@@ -1,17 +1,58 @@
+// import React from "react";
+// import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
+
+// const MainPage = () => {
+//   const navigate = useNavigate();
+//   return (
+//     <button
+//       onClick={() => {
+//         return navigate("/login");
+//       }}
+//     >
+//       login
+//     </button>
+//   );
+// };
+
+// export default MainPage;
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
+
   return (
-    <button
-      onClick={() => {
-        return navigate("/login");
-      }}
+    <Box
+      width="100%"
+      height="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      backgroundColor={theme.palette.background.alt}
     >
-      login
-    </button>
+      <Typography
+        fontWeight="bold"
+        fontSize="32px"
+        color="primary"
+        mb={4}
+        textAlign="center"
+      >
+        Welcome to SocialSphere
+      </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => navigate("/login")}
+        sx={{ padding: "1rem 2rem", fontSize: "16px", borderRadius: "1rem" }}
+      >
+        Login
+      </Button>
+    </Box>
   );
 };
 

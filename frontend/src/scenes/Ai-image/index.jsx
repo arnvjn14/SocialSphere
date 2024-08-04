@@ -1,11 +1,45 @@
+// import React from "react";
+// import Form from "./Form";
+
+// const AiImageComponent = () => {
+//   return (
+//     <>
+//       <Form />
+//     </>
+//   );
+// };
+
+// export default AiImageComponent;
+
 import React from "react";
 import Form from "./Form";
+import { Box, Typography, useTheme } from "@mui/material";
 
 const AiImageComponent = () => {
+  const theme = useTheme();
+
   return (
-    <>
+    <Box
+      width="100%"
+      height="100vh"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      backgroundColor={theme.palette.background.alt}
+      padding="2rem"
+    >
+      <Typography
+        fontWeight="bold"
+        fontSize="32px"
+        color="primary"
+        textAlign="center"
+        mb={4}
+      >
+        Generate AI Image
+      </Typography>
       <Form />
-    </>
+    </Box>
   );
 };
 

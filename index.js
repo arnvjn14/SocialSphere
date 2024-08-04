@@ -71,25 +71,27 @@ const PORT = process.env.PORT || 6001;
 //   })
 //   .catch((err) => console.log(`ERROR ${err}`));
 
-// LOCAL CONNECTION
-mongoose.connect("mongodb://localhost:27017/website", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// // LOCAL CONNECTION
+// mongoose.connect("mongodb://localhost:27017/website", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-// REQUIRED
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-  console.log("Database connected");
+// // REQUIRED
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", () => {
+//   console.log("Database connected");
 
-  // console.log(users);
-  // console.log(posts);
+//   // console.log(users);
+//   // console.log(posts);
 
-  // ADD DATA ONLY ONE TIME
-  // User.insertMany(users);
-  // Post.insertMany(posts);
-});
+//   // ADD DATA ONLY ONE TIME
+//   // User.insertMany(users);
+//   // Post.insertMany(posts);
+// });
+
+connectDB(process.env.MONGO_URL);
 
 app.listen(PORT, () => {
   console.log(`Serving on port ${PORT}`);
@@ -102,6 +104,7 @@ import postRoutes from "./routes/posts.js";
 import apiRoutes from "./routes/apiRoutes.js";
 import { verifyToken } from "./middleware/auth.js";
 import { createPost } from "./controllers/posts.js";
+import connectDB from "./connect.js";
 
 // ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);

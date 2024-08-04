@@ -8,6 +8,43 @@
 
 // export default router;
 
+// import express from "express";
+// import * as dotenv from "dotenv";
+// import { Configuration, OpenAIApi } from "openai";
+
+// dotenv.config();
+
+// const router = express.Router();
+
+// const configuration = new Configuration({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
+// const openai = new OpenAIApi(configuration);
+
+// router.route("/").get((req, res) => {
+//   res.send("hello from ai api");
+// });
+// router.route("/").post(async (req, res) => {
+//   try {
+//     const { prompt } = req.body;
+//     const aiResponse = await openai.createImage({
+//       prompt,
+//       n: 1,
+//       size: "1024x1024",
+//       response_format: "b64_json",
+//     });
+
+//     const image = aiResponse.data.data[0].b64_json;
+
+//     res.status(200).json({ photo: image });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ msg: err.msg });
+//   }
+// });
+
+// export default router;
+
 import express from "express";
 import * as dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
@@ -24,9 +61,15 @@ const openai = new OpenAIApi(configuration);
 router.route("/").get((req, res) => {
   res.send("hello from ai api");
 });
+
 router.route("/").post(async (req, res) => {
   try {
     const { prompt } = req.body;
+
+    if (!prompt) {
+      return res.status(400).json({ msg: "Prompt is required" });
+    }
+
     const aiResponse = await openai.createImage({
       prompt,
       n: 1,
@@ -38,8 +81,8 @@ router.route("/").post(async (req, res) => {
 
     res.status(200).json({ photo: image });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ msg: err.msg });
+    console.error("Error generating image:", err);
+    res.status(500).json({ msg: "Failed to generate image" });
   }
 });
 
